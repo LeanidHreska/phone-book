@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import Contact from './Contact/Contact';
 import SearchBlock from './SearchBlock/SearchBlock';
 
-class App extends Component {
+class ProvideData extends Component {
   render() {
-    const contactArray = [
+    /*const contactArray = [
       {
         id: 1,
         imgUrl: "https://goo.gl/ikPF3r",
@@ -17,12 +18,12 @@ class App extends Component {
         name: 'leha',
         phoneNumber: 375447654321
       }
-    ];
+    ];*/
     return (
       <main>
         <SearchBlock />
         { 
-          contactArray.map((contactData) => {
+          this.props.contactArray.map((contactData) => {
             return <Contact contactData={ contactData } key={ contactData.id } />
           })
         }
@@ -31,4 +32,10 @@ class App extends Component {
   }
 }
 
-export default App;
+function mapStateToProps(state) {
+  return {
+    contactArray: state.contactArray
+  }
+}
+
+export default connect(mapStateToProps)(ProvideData);
