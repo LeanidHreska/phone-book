@@ -4,6 +4,7 @@ import styles from './index.css';
 import 'font-awesome/css/font-awesome.min.css';
 
 import ProvideData from './components/ProvideData';
+import ContactForm from './components/ContactForm/ContactForm';
 
 
 import { Provider } from 'react-redux';
@@ -17,10 +18,10 @@ ReactDOM.render(
     <div>
       <header className={ styles.header }>phoneBook</header>
       <Router history={ browserHistory } >
-        <Route path="/" component={ ProvideData } >
-          <Route path="editContact" exact  />
-          <Route path="addContact" exact  />
-        </Route>
+        <Route path="/" component={ ProvideData } />
+        <Route path="/addContact" component={ ContactForm } />
+        <Route path="/editContact/:id" component={ ContactForm } />
+
       </Router>
     </div>
   </Provider>, 

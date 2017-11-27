@@ -31,6 +31,7 @@
   margin-left: 5%;
   display: flex;
   flex-direction: column;
+  color: black;
 }
 
 .fa {
@@ -43,6 +44,7 @@
   right: 15px;
   top: 0;
 }
+
 
 .closeButton:hover {
   color: #F1041C;

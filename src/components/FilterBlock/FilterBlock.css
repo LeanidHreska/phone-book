@@ -1,8 +1,8 @@
-.searchBlock {
+.filterBlock {
   margin: 25px 20px;
 }
 
-.searchInput {
+.filterInput {
   width: 40%;
   height: 50px;
   outline: none;
@@ -12,6 +12,6 @@
   border: 2px solid #BAD9F3;
 }
 
-.searchInput:focus {
+.filterInput:focus {
   border-color: #1F9DF4;
 }

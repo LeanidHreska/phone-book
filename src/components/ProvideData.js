@@ -1,41 +1,54 @@
 import React, { Component } from 'react';
+import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import Contact from './Contact/Contact';
-import SearchBlock from './SearchBlock/SearchBlock';
+import FilterBlock from './FilterBlock/FilterBlock';
+import AddContactButton from './AddContactButton/AddContactButton';
+
+import * as contactActions from '../actions/ContactActions';
+
+import styles from './ProvideData.css';
+
 
 class ProvideData extends Component {
+
   render() {
-    /*const contactArray = [
-      {
-        id: 1,
-        imgUrl: "https://goo.gl/ikPF3r",
-        name: 'ivan',
-        phoneNumber: 375441234567
-      },
-      {
-        id: 2,
-        imgUrl: "https://goo.gl/ikPF3r",
-        name: 'leha',
-        phoneNumber: 375447654321
-      }
-    ];*/
     return (
       <main>
-        <SearchBlock />
+        <AddContactButton />
+        <FilterBlock filterByName={ this.props.contactActions.filterContacts.bind(this) } />
         { 
-          this.props.contactArray.map((contactData) => {
-            return <Contact contactData={ contactData } key={ contactData.id } />
+          this.props.contactsArray.length
+          ?
+          this.props.contactsArray.map((contactData) => {
+            return <Contact contactData={ contactData } key={ contactData.id + contactData.name }
+              deleteContact={ this.props.contactActions.deleteContact.bind(this) }        
+            />
           })
+          :
+            this.props.filter 
+            ? 
+            <span className={ styles.span } > no results found </span>
+            :
+            <span className={ styles.span } > contact list is empty </span>
         }
       </main>
     );
   }
+
 }
 
 function mapStateToProps(state) {
   return {
-    contactArray: state.contactArray
+    contactsArray: state.filter ? state.filteredContactsArray : state.contactsArray,
+    filter: state.filter
   }
 }
 
-export default connect(mapStateToProps)(ProvideData);
+function mapDispatchToProps(dispatch) {
+  return {
+    contactActions: bindActionCreators(contactActions, dispatch)
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(ProvideData);

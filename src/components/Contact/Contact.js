@@ -1,7 +1,7 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import icons from 'font-awesome/css/font-awesome.min.css';
 import styles from './Contact.css';
+import { Link } from 'react-router/lib';
 
 const Contact = (props) => {
   return (
@@ -11,19 +11,18 @@ const Contact = (props) => {
         <span> { props.contactData.name } </span>
         <br />
         <span> { props.contactData.phoneNumber } </span>
-        <div className={ styles.closeButton } >
+        <div className={ styles.closeButton } onClick={ props.deleteContact.bind(null, props.contactData.id) } >
           <i className={ styles.fa + ' ' + icons.fa + ' ' + icons['fa-times'] } />
         </div>
-        <div className={ styles.editButton } >
-          <i className={ styles.fa + ' ' + icons.fa + ' ' + icons['fa-pencil-square-o'] } />
-        </div>
+        <Link to={`/editContact/${ props.contactData.id }`}>
+          <div className={ styles.editButton } >
+            <i className={ styles.fa + ' ' + icons.fa + ' ' + icons['fa-pencil-square-o'] } />
+          </div>
+        </Link>
       </div>
     </div>
   );
 };
 
-Contact.PropTypes = {
-  contactData: PropTypes.object.isRequired
-}
 
 export default Contact;
