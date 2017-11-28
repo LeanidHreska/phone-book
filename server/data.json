@@ -1,0 +1,26 @@
+[  
+  {
+    "id": "1",
+    "name": "Alexey",
+    "phoneNumber": "375441234567",
+    "imgUrl": "https://picsum.photos/125/125/?random"
+  },
+  {
+    "id": "2",
+    "name": "Victor",
+    "phoneNumber": "375447654321",
+    "imgUrl": "https://picsum.photos/135/135/?random"
+  },
+  {
+    "id": "3",
+    "name": "Ivan",
+    "phoneNumber": "375331234517",
+    "imgUrl": "https://picsum.photos/130/130/?random"
+  },
+  {
+    "id": "4",
+    "name": "Sergey",
+    "phoneNumber": "375731234517",
+    "imgUrl": "https://picsum.photos/140/140/?random"
+  }
+]
