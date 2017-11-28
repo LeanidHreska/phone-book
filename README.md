@@ -7,12 +7,4 @@ npm i
 ## 2 of 2 step
 ```
 npm start
-```
-
-
-To start the API server you need to run:
-```
-cd server
-node app.js
-```
 
